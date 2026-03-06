@@ -1,0 +1,162 @@
+/* ============================================================
+   profile-hover-card.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Sans:wght@400;500&family=DM+Mono:wght@500&display=swap');
+
+/* ── Trigger ── */
+.phc-trigger {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  font-size: inherit;
+  color: #a78bfa;
+  cursor: pointer;
+  border-bottom: 1px dashed rgba(167,139,250,0.45);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+  user-select: none;
+}
+.phc-trigger:hover {
+  color: #c4b5fd;
+  border-bottom-color: rgba(196,181,253,0.6);
+}
+
+/* ── Card ── */
+#phc-card {
+  position: fixed;
+  z-index: 99999;
+  width: 290px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-8px) scale(0.96);
+  transition: opacity 0.22s ease, transform 0.28s cubic-bezier(0.34,1.4,0.64,1);
+  font-family: 'DM Sans', sans-serif;
+}
+#phc-card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+#phc-card.placement-top {
+  transform: translateY(8px) scale(0.96);
+}
+#phc-card.placement-top.visible {
+  transform: translateY(0) scale(1);
+}
+
+/* Arrow */
+#phc-arrow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 0;
+}
+#phc-card.placement-bottom #phc-arrow {
+  top: -7px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid rgba(255,255,255,0.08);
+}
+#phc-card.placement-top #phc-arrow {
+  bottom: -7px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid rgba(255,255,255,0.08);
+}
+
+/* Inner box */
+#phc-inner {
+  background: #0d0f14;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  box-shadow: 0 32px 80px rgba(0,0,0,.85), 0 0 0 1px rgba(255,255,255,0.05);
+  overflow: hidden;
+}
+
+/* Light theme */
+#phc-card.theme-light #phc-inner {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.08);
+  box-shadow: 0 24px 64px rgba(0,0,0,.12), 0 0 0 1px rgba(0,0,0,0.06);
+}
+#phc-card.theme-light .phc-name   { color: #0f172a; }
+#phc-card.theme-light .phc-handle { color: #94a3b8; }
+#phc-card.theme-light .phc-bio    { color: #64748b; }
+#phc-card.theme-light .phc-divider{ background: rgba(0,0,0,0.06); }
+#phc-card.theme-light .phc-avatar-wrap { border-color: rgba(0,0,0,0.08); background: #f1f5f9; }
+#phc-card.theme-light .phc-trigger { color: #7c3aed; }
+
+/* Shimmer bar */
+#phc-shimmer {
+  height: 3px;
+  background: linear-gradient(90deg, #7c6af7, #a78bfa, #60a5fa, #34d399, #7c6af7);
+  background-size: 300% 100%;
+  animation: phc-shimmer 3s linear infinite;
+}
+@keyframes phc-shimmer {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 300% 0%; }
+}
+
+/* Body padding */
+#phc-body { padding: 16px; }
+
+/* Header: avatar + name */
+.phc-header {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 12px;
+}
+.phc-avatar-wrap {
+  width: 50px; height: 50px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1.5px solid rgba(255,255,255,0.08);
+  background: #1a1d27;
+}
+.phc-avatar-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.phc-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px; font-weight: 700;
+  color: #f1f5f9; line-height: 1.2;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  margin-bottom: 3px;
+}
+.phc-handle {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; font-weight: 500; color: #4a5568;
+}
+
+/* Bio */
+.phc-bio {
+  font-size: 13px; line-height: 1.6;
+  color: #8896a8; margin-bottom: 12px;
+}
+
+/* Divider */
+.phc-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+  margin-bottom: 12px;
+}
+
+/* Social links */
+.phc-socials { display: flex; gap: 4px; flex-wrap: wrap; }
+.phc-social-link {
+  display: flex; align-items: center; justify-content: center;
+  width: 33px; height: 33px;
+  border-radius: 9px;
+  color: #4a5568;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: color 0.18s, background 0.18s, border-color 0.18s, transform 0.18s;
+}
+.phc-social-link:hover { transform: translateY(-2px); }
+.phc-social-link svg   { display: block; }

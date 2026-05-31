@@ -4,14 +4,19 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=DM+Sans:wght@400;500&family=DM+Mono:wght@500&display=swap');
 
-/* ── Trigger ── */
+
+/* =================================================== */
+
+.made-with{
+    color: #4a5568;
+}
 .phc-trigger {
   display: inline-flex;
   align-items: center;
-  font-family: 'DM Mono', monospace;
-  font-weight: 500;
+  /* font-family: 'DM Mono', monospace; */
+  font-weight: 300;
   font-size: inherit;
-  color: #a78bfa;
+  color: #f3f2f5ae;
   cursor: pointer;
   border-bottom: 1px dashed rgba(167,139,250,0.45);
   padding-bottom: 1px;
@@ -160,3 +165,32 @@
 }
 .phc-social-link:hover { transform: translateY(-2px); }
 .phc-social-link svg   { display: block; }
+
+#phc-close-btn {
+      display: none;
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: inherit;
+      opacity: 0.5;
+      font-size: 18px;
+      line-height: 1;
+      padding: 2px 6px;
+      z-index: 10;
+    }
+    @media (hover: none) {
+      #phc-close-btn { display: block; }
+      #phc-card { position: fixed !important; }
+    }
+    .handle{
+     display: flex;
+     justify-content: center;
+     
+    }
+    .handle span {
+      padding-left: 5px;
+    }
+    /* =================================================== */
